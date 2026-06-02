@@ -10,15 +10,17 @@ export function CheckoutPage({ cart, loadCart }) {
   const [paymentSummary, setPaymentSummary] = useState(null);
 
   useEffect(() => {
-    const fetchCheckoutData = async () => {
-      let response = await axios.get(
-        '/https://ecomme-backend-ocvx.onrender.com/delivery-options?expand=estimatedDeliveryTime'
-      );
-      setDeliveryOptions(response.data);
+   const fetchCheckoutData = async () => {
+  let response = await axios.get(
+    'https://ecomme-backend-ocvx.onrender.com/api/delivery-options?expand=estimatedDeliveryTime'
+  );
+  setDeliveryOptions(response.data);
 
-      response = await axios.get('https://ecomme-backend-ocvx.onrender.com/api/payment-summary');
-      setPaymentSummary(response.data);
-    };
+  response = await axios.get(
+    'https://ecomme-backend-ocvx.onrender.com/api/payment-summary'
+  );
+  setPaymentSummary(response.data);
+};
 
     fetchCheckoutData();
   }, [cart]);
