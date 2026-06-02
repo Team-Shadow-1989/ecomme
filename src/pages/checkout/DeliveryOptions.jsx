@@ -16,7 +16,7 @@ export function DeliveryOptions({ cartItem, deliveryOptions, loadCart }) {
         }
 
         const updateDeliveryOption = async () => {
-          await axios.put(`/api/cart-items/${cartItem.productId}`, {
+          await axios.put(`https://ecomme-backend-ocvx.onrender.com/api/cart-items/${cartItem.productId}`, {
             deliveryOptionId: deliveryOption.id
           });
           await loadCart();
